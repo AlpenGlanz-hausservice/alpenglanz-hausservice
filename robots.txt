@@ -1,0 +1,11 @@
+# robots.txt — AlpenGlanz Hausservice
+# Alle Suchmaschinen dürfen die gesamte Seite crawlen.
+User-agent: *
+Allow: /
+
+Sitemap: https://alpenglanz-hausservice.at/sitemap.xml
+
+# Hinweis: Die Sperren für KI-Crawler (GPTBot, Google-Extended, ClaudeBot, CCBot …)
+# werden von Cloudflare ("Managed robots.txt" / AI Scrapers & Crawlers) automatisch
+# UNTER diesem Block angehängt. Diese Regeln bei Bedarf im Cloudflare-Dashboard
+# steuern (nicht hier), falls KI-Assistenten die Seite zitieren dürfen sollen.
