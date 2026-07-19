@@ -156,8 +156,11 @@ export async function onRequestPost({ request, env }) {
       htmlContent: ownerHtml,
     });
   } catch (err) {
-    return json({ ok: false, error: MSG_ERROR }, 502, origin);
-  }
+    return json({
+        ok: false,
+        error: err.message
+    }, 502, origin);
+}
 
   //    Automatische Bestätigung an den Kunden — "best effort":
   //    ein Fehler hier soll den Erfolg für den Nutzer nicht kippen.
