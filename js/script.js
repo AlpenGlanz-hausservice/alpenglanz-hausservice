@@ -234,42 +234,7 @@
     });
   }
 
-  /* ---------- WhatsApp button: particle burst on click ---------- */
-  var waBtn = document.querySelector('.wa-float');
-  if (waBtn && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    waBtn.addEventListener('click', function () {
-      var rect = waBtn.getBoundingClientRect();
-      var cx = rect.left + rect.width / 2;
-      var cy = rect.top + rect.height / 2;
-
-      waBtn.classList.add('is-bursting');
-      window.setTimeout(function () { waBtn.classList.remove('is-bursting'); }, 220);
-
-      for (var i = 0; i < 12; i++) {
-        (function (i) {
-          var p = document.createElement('div');
-          p.className = 'wa-particle';
-          p.style.left = cx + 'px';
-          p.style.top = cy + 'px';
-          document.body.appendChild(p);
-
-          var angle = (Math.PI * 2 * i) / 12 + (Math.random() - 0.5) * 0.5;
-          var dist = 34 + Math.random() * 34;
-          var dx = Math.cos(angle) * dist;
-          var dy = Math.sin(angle) * dist;
-
-          p.animate(
-            [
-              { transform: 'translate(-50%, -50%) translate(0, 0) scale(1)', opacity: 1 },
-              { transform: 'translate(-50%, -50%) translate(' + dx + 'px,' + dy + 'px) scale(0)', opacity: 0 }
-            ],
-            { duration: 600 + Math.random() * 200, delay: i * 12, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
-          ).onfinish = function () { p.remove(); };
-        })(i);
-      }
-      // The link still opens WhatsApp in a new tab; particles play on the current page.
-    });
-  }
+  /* WhatsApp button particle burst removed (de-slop: no click gimmick). */
 })();
 
 /* =========================================================

@@ -96,9 +96,9 @@ export async function onRequestPost({ request, env }) {
   let body;
   try {
     body = await request.json();
- } catch (err) {
-    return json({ ok: false, error: MSG_ERROR }, 502, origin);
-}
+  } catch (err) {
+    return json({ ok: false, error: 'Ungültige Anfrage.' }, 400, origin);
+  }
 
   // 2) Felder einlesen und normalisieren.
   const name     = String(body.name || '').trim();
@@ -156,11 +156,8 @@ export async function onRequestPost({ request, env }) {
       htmlContent: ownerHtml,
     });
   } catch (err) {
-    return json({
-        ok: false,
-        error: err.message
-    }, 502, origin);
-}
+    return json({ ok: false, error: MSG_ERROR }, 502, origin);
+  }
 
   //    Automatische Bestätigung an den Kunden — "best effort":
   //    ein Fehler hier soll den Erfolg für den Nutzer nicht kippen.
